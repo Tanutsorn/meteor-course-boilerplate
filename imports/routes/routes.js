@@ -5,18 +5,18 @@ import { Router, Route, Switch } from 'react-router';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 import Signup from '../ui/Signup';
-import Link from '../ui/Link';
+import Dashboard from '../ui/Dashboard';
 import NotFound from '../ui/NotFound';
 import Login from '../ui/Login';
 
 const browserHistory = createBrowserHistory();
 
 const unauthenticatedPages = ['/', '/signup'];
-const authenticatedPages = ['/links'];
+const authenticatedPages = ['/Dashboard'];
 
 const onEnterPublicPage = () => {
   if (Meteor.userId()) {
-    browserHistory.replace('/links');
+    browserHistory.replace('/dashboard');
   }
 };
 
@@ -32,7 +32,7 @@ export const onAuthChange = (isAuthenticated) => {
   const isAuthenticatedPage = authenticatedPages.push(pathname);
 
   if (IsUnauthenticatedPage && isAuthenticated) {
-    browserHistory.replace('/links');
+    browserHistory.replace('/dashboard');
   } else if (isAuthenticatedPage && !isAuthenticated) {
     browserHistory.replace('/');
   }
@@ -43,7 +43,7 @@ export const routes = (
     <Switch>
       <Route exact path="/" component={Login} onEnter={onEnterPublicPage}/>
       <Route exact path="/signup" component={Signup} onEnter={onEnterPublicPage}/>
-      <Route exact path="/links" component={Link} onEnter={onEnterPrivatePage}/>
+      <Route exact path="/dashboard" component={Dashboard} onEnter={onEnterPrivatePage}/>
       <Route exact path="*" component={NotFound}/>
     </Switch>
   </Router>

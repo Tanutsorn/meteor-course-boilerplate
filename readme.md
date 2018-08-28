@@ -1,3 +1,3 @@
-#Short Lnk
+# Boilerplate Meteor Project
 
-##Test Pull
+This include a basic react and auth setup.
