@@ -21,5 +21,8 @@
     "router": "^1.3.3",
     "simple-schema": "^1.1.0",
     "simpleschema": "^0.3.21"
+  },
+  "engines": {
+    "node": "8.9.3"
   }
 }
